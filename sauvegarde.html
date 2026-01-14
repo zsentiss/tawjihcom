@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TawjihCOM - Sauvegarde</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Charger les modules JavaScript dans l'ordre -->
+    <script src="js/config.js"></script>
+    <script src="js/data-jobs.js"></script>
+    <script src="js/data-formations.js"></script>
+    <script src="js/functions-core.js"></script>
+    <script src="js/functions-ui.js"></script>
+    <script src="js/functions-jobs.js"></script>
+    <script src="js/functions-formations.js"></script>
+    <script src="js/functions-save.js"></script>
+    <script src="js/functions-quiz.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="logo-hat"></div>
+                    <div class="logo-pompon"></div>
+                    <div class="logo-compass"></div>
+                </div>
+                <div class="logo-text">
+                    <h1>Tawjih<span>COM</span></h1>
+                    <p class="tagline">Votre avenir commence ici</p>
+                </div>
+            </div>
+            
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="quizz.html"><i class="fas fa-clipboard-list"></i> Quizz</a></li>
+                    <li><a href="metiers.html"><i class="fas fa-briefcase"></i> Métiers</a></li>
+                    <li><a href="parcours.html"><i class="fas fa-road"></i> Parcours</a></li>
+                    <li><a href="sauvegarde.html" class="active"><i class="fas fa-save"></i> Sauvegarde</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="page">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-save"></i> Sauvegarde</h2>
+            
+            <!-- Les sauvegardes s'affichent ici -->
+            <div id="savedItems">
+                <p style="text-align: center; padding: 40px;">Chargement...</p>
+            </div>
+            
+            <!-- Note : Les boutons "Générer PDF" et "Tout effacer" 
+                 seront ajoutés AUTOMATIQUEMENT par JavaScript -->
+            
+            <div class="card" style="margin-top: 40px;">
+                <h3><i class="fas fa-info-circle"></i> Comment ça marche ?</h3>
+                <p>Pour sauvegarder un métier ou une formation :</p>
+                <ol style="margin: 15px 0 15px 20px;">
+                    <li>Allez sur la page <a href="metiers.html">Métiers</a> ou <a href="parcours.html">Parcours</a></li>
+                    <li>Cliquez sur "Sauvegarder" sous l'élément souhaité</li>
+                    <li>Revenez sur cette page pour voir vos favoris</li>
+                </ol>
+                <p><strong>Astuce :</strong> Utilisez le bouton "Générer PDF" pour exporter vos sauvegardes.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tawjih<span>COM</span></h3>
+                    <p>Plateforme d'orientation pour les jeunes marocains.</p>
+                    <p><i class="fas fa-user"></i> Zineb Sentissi</p>
+                    <p><i class="fas fa-calendar"></i> Projet 2025</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="quizz.html">Quizz</a></li>
+                        <li><a href="metiers.html">Métiers</a></li>
+                        <li><a href="parcours.html">Parcours</a></li>
+                        <li><a href="sauvegarde.html">Sauvegarde</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Objectifs</h3>
+                    <ul>
+                        <li>Découvrir ses centres d'intérêt</li>
+                        <li>Explorer les métiers accessibles</li>
+                        <li>Trouver les formations adaptées</li>
+                        <li>Planifier son avenir professionnel</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TawjihCOM - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

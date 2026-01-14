@@ -1,0 +1,220 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TawjihCOM - Liste des Métiers</title>
+    <link rel="stylesheet" href="styles.css">
+  <!-- Charger les modules JavaScript dans l'ordre -->
+<script src="js/config.js"></script>
+<script src="js/data-jobs.js"></script>
+<script src="js/data-formations.js"></script>
+<script src="js/functions-core.js"></script>
+<script src="js/functions-ui.js"></script>
+<script src="js/functions-jobs.js"></script>
+<script src="js/functions-formations.js"></script>
+<script src="js/functions-save.js"></script>
+<script src="js/functions-quiz.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Fichier quiz séparé (si nécessaire) -->
+<script src="js/functions-quiz.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+    <div class="logo-icon">
+        <div class="logo-hat"></div>
+        <div class="logo-pompon"></div>
+        <div class="logo-compass"></div>
+    </div>
+    <div class="logo-text">
+        <h1>Tawjih<span>COM</span></h1>
+        <p class="tagline">Votre avenir commence ici</p>
+    </div>
+</div>
+            
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="quizz.html"><i class="fas fa-clipboard-list"></i> Quizz</a></li>
+                    <li><a href="metiers.html" class="active"><i class="fas fa-briefcase"></i> Métiers</a></li>
+                    <li><a href="parcours.html"><i class="fas fa-road"></i> Parcours</a></li>
+                    <li><a href="sauvegarde.html"><i class="fas fa-save"></i> Sauvegarde</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="page">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Liste des Métiers</h2>
+            <p>Explorez +30 métiers accessibles au Maroc. Filtrez par domaine ou utilisez la recherche.</p>
+          
+           <!-- Barre de recherche -->
+        <div class="search-container" style="margin: 20px 0;">
+         <input type="text" id="searchInput" placeholder="🔍 Rechercher un métier, une compétence, un domaine..." style="width: 100%; padding: 12px 15px; border: 2px solid var(--bleu); border-radius: 8px; font-size: 1rem;">
+        </div> 
+        <div class="filters">
+    <p>Filtrer par :</p>
+    <div class="filter-buttons" id="filterButtons">
+        <!-- Généré par JS -->
+    </div>
+
+ 
+    
+    <!-- AJOUTEZ CES FILTRES SUPPLEMENTAIRES -->
+    <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+        <select id="filterEtudes" style="padding: 8px; border: 2px solid var(--bleu); border-radius: 5px;">
+            <option value="tous">Durée des études</option>
+            <option value="court">Court (Bac+2/+3)</option>
+            <option value="moyen">Moyen (Bac+4/+5)</option>
+            <option value="long">Long (Bac+6 et plus)</option>
+        </select>
+        
+        <select id="filterSalaire" style="padding: 8px; border: 2px solid var(--bleu); border-radius: 5px;">
+            <option value="tous">Salaire</option>
+            <option value="bas">Bas (3k-8k DH)</option>
+            <option value="moyen">Moyen (8k-15k DH)</option>
+            <option value="eleve">Élevé (15k+ DH)</option>
+        </select>
+        
+        <select id="filterBac" style="padding: 8px; border: 2px solid var(--bleu); border-radius: 5px;">
+            <option value="tous">Type de Bac</option>
+            <option value="S">Scientifique</option>
+            <option value="Eco">Économique</option>
+            <option value="Litt">Littéraire</option>
+            <option value="Toutes">Toutes filières</option>
+        </select>
+    </div>
+</div>
+                        <!-- COMPARATEUR DE MÉTIERS -->
+            <div class="comparator-card">
+    <h3><i class="fas fa-balance-scale"></i> Comparateur de Métiers</h3>
+    <p>Comparez 2 métiers pour mieux choisir</p>
+    
+    <div class="comparator-selectors">
+        <div class="comparator-select">
+            <label>Métier 1 :</label>
+            <select id="compareJob1">
+                <option value="">-- Choisir un métier --</option>
+            </select>
+        </div>
+        
+        <div class="comparator-select">
+            <label>Métier 2 :</label>
+            <select id="compareJob2">
+                <option value="">-- Choisir un métier --</option>
+            </select>
+        </div>
+        
+        <button class="btn btn-compare" onclick="compareTwoJobs()">
+            <i class="fas fa-chart-bar"></i> Comparer
+        </button>
+    </div>
+    
+    <div id="comparisonResults" class="comparison-results" style="display: none;">
+        <!-- Résultats affichés ici -->
+    </div>
+</div>
+            
+            <!-- FILTRES AVANCÉS -->
+            <div class="filters">
+                <div class="filter-buttons" id="filterButtons">
+                    <!-- Boutons générés par JS -->
+                </div>
+                
+                <!-- FILTRES SUPPLEMENTAIRES -->
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <label><i class="fas fa-graduation-cap"></i> Durée études :</label>
+                        <select id="filterEtudes" class="filter-select">
+                            <option value="tous">Toutes durées</option>
+                            <option value="court">Court (Bac+2/+3)</option>
+                            <option value="moyen">Moyen (Bac+4/+5)</option>
+                            <option value="long">Long (Bac+6 et +)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label><i class="fas fa-money-bill-wave"></i> Salaire :</label>
+                        <select id="filterSalaire" class="filter-select">
+                            <option value="tous">Tous salaires</option>
+                            <option value="bas">Bas (3k-8k DH)</option>
+                            <option value="moyen">Moyen (8k-15k DH)</option>
+                            <option value="eleve">Élevé (15k+ DH)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label><i class="fas fa-book"></i> Type Bac :</label>
+                        <select id="filterBac" class="filter-select">
+                            <option value="tous">Tous Bac</option>
+                            <option value="S">Scientifique</option>
+                            <option value="Éco">Économique</option>
+                            <option value="Litt">Littéraire</option>
+                            <option value="Toutes">Toutes filières</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- COMPTEUR DE RÉSULTATS -->
+                <div class="results-counter">
+                    <span id="jobsCount">0</span> métiers trouvés
+                </div>
+            </div>
+            
+            <div class="jobs-list" id="jobsContainer">
+                <!-- Métiers générés par JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tawjih<span>COM</span></h3>
+                    <p>Plateforme d'orientation pour les jeunes marocains.</p>
+                    <p><i class="fas fa-user"></i> Zineb Sentissi</p>
+                    <p><i class="fas fa-calendar"></i> Projet 2025</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="quizz.html">Quizz</a></li>
+                        <li><a href="metiers.html">Métiers</a></li>
+                        <li><a href="parcours.html">Parcours</a></li>
+                        <li><a href="sauvegarde.html">Sauvegarde</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Objectifs</h3>
+                    <ul>
+                        <li>Découvrir ses centres d'intérêt</li>
+                        <li>Explorer les métiers accessibles</li>
+                        <li>Trouver les formations adaptées</li>
+                        <li>Planifier son avenir professionnel</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TawjihCOM - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

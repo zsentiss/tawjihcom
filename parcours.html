@@ -1,0 +1,186 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TawjihCOM - Parcours de Formation</title>
+    <link rel="stylesheet" href="styles.css">
+<!-- Charger les modules JavaScript dans l'ordre -->
+<script src="js/config.js"></script>
+<script src="js/data-jobs.js"></script>
+<script src="js/data-formations.js"></script>
+<script src="js/functions-core.js"></script>
+<script src="js/functions-ui.js"></script>
+<script src="js/functions-jobs.js"></script>
+<script src="js/functions-formations.js"></script>
+<script src="js/functions-save.js"></script>
+<script src="js/functions-quiz.js"></script>
+<script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+    <div class="logo-icon">
+        <div class="logo-hat"></div>
+        <div class="logo-pompon"></div>
+        <div class="logo-compass"></div>
+    </div>
+    <div class="logo-text">
+        <h1>Tawjih<span>COM</span></h1>
+        <p class="tagline">Votre avenir commence ici</p>
+    </div>
+</div>
+            
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="quizz.html"><i class="fas fa-clipboard-list"></i> Quizz</a></li>
+                    <li><a href="metiers.html"><i class="fas fa-briefcase"></i> Métiers</a></li>
+                    <li><a href="parcours.html" class="active"><i class="fas fa-road"></i> Parcours</a></li>
+                    <li><a href="sauvegarde.html"><i class="fas fa-save"></i> Sauvegarde</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <!-- CONTENU PRINCIPAL -->
+<main class="page">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-road"></i> Parcours de Formation</h2>
+        <p class="subtitle">Trouvez les écoles et formations adaptées à votre projet professionnel</p>
+        
+        <!-- BARRE DE RECHERCHE -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchFormation" placeholder="Rechercher une école, une ville, un domaine...">
+        </div>
+        
+        <!-- FILTRES RAPIDES -->
+        <div class="quick-filters">
+            <div class="filter-category">
+                <h4><i class="fas fa-map-marker-alt"></i> Ville</h4>
+                <div class="filter-buttons" id="villeFilters">
+                    <button class="filter-btn active" data-filter="toutes">Toutes</button>>
+
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <h4><i class="fas fa-graduation-cap"></i> Domaine</h4>
+                <div class="filter-buttons" id="domaineFilters">
+                    <button class="filter-btn active" data-filter="tous">Tous</button>
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <h4><i class="fas fa-building"></i> Type</h4>
+                <div class="filter-buttons" id="typeFilters">
+                    <button class="filter-btn active" data-filter="tous">Tous</button>
+                    <button class="filter-btn" data-filter="Public">Public</button>
+                    <button class="filter-btn" data-filter="Privé">Privé</button>
+                    <button class="filter-btn" data-filter="Gratuit">Gratuit</button>
+                </div>
+            </div>
+            
+            <div class="filter-category">
+                <h4><i class="fas fa-star"></i> Niveau Bac</h4>
+                <div class="filter-buttons" id="bacFilters">
+                    <button class="filter-btn active" data-filter="0">Tous niveaux</button>
+                    <button class="filter-btn" data-filter="10">10+</button>
+                    <button class="filter-btn" data-filter="12">12+</button>
+                    <button class="filter-btn" data-filter="14">14+</button>
+                    <button class="filter-btn" data-filter="16">16+</button>
+                </div>
+            </div>
+            <div class="filter-category">
+    <h4><i class="fas fa-graduation-cap"></i> Filière Bac</h4>
+    <div class="filter-buttons" id="bacFiliereFilters">
+        <button class="filter-btn active" data-filter="toutes">Toutes</button>
+        <button class="filter-btn" data-filter="Scientifique">Scientifique</button>
+        <button class="filter-btn" data-filter="Littéraire">Littéraire</button>
+        <button class="filter-btn" data-filter="Économique">Économique</button>
+        <button class="filter-btn" data-filter="Technique">Technique</button>
+    </div>
+</div>
+        </div>
+        
+        <!-- COMPTEUR DE RÉSULTATS -->
+        <div class="results-counter">
+            <span id="resultsCount">0</span> formations trouvées
+        </div>
+        
+        <!-- LISTE DES FORMATIONS -->
+        <div class="formations-grid" id="formationsContainer">
+            <!-- Les formations s'affichent ici -->
+        </div>
+        
+        <!-- MESSAGE SI AUCUN RÉSULTAT -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search fa-3x"></i>
+            <h3>Aucune formation trouvée</h3>
+            <p>Essayez de modifier vos critères de recherche</p>
+        </div>
+    </div>
+</main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tawjih<span>COM</span></h3>
+                    <p>Plateforme d'orientation pour les jeunes marocains.</p>
+                    <p><i class="fas fa-user"></i> Zineb Sentissi</p>
+                    <p><i class="fas fa-calendar"></i> Projet 2025</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="quizz.html">Quizz</a></li>
+                        <li><a href="metiers.html">Métiers</a></li>
+                        <li><a href="parcours.html">Parcours</a></li>
+                        <li><a href="sauvegarde.html">Sauvegarde</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Objectifs</h3>
+                    <ul>
+                        <li>Découvrir ses centres d'intérêt</li>
+                        <li>Explorer les métiers accessibles</li>
+                        <li>Trouver les formations adaptées</li>
+                        <li>Planifier son avenir professionnel</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TawjihCOM - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+<script>
+    // Initialisation spécifique à la page parcours
+    if (window.location.pathname.includes('parcours.html') || 
+        document.getElementById('formationsContainer')) {
+        console.log("🔄 Initialisation page Parcours...");
+        initFormationsData();
+        setupFormationFilters();
+        setupFormationSearch();
+        displayFormations();
+        updateResultsCount();
+    }
+</script>
+
+</body>
+</html>

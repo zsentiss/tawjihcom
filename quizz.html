@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TawjihCOM - Quizz d'Orientation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/config.js"></script>
+    <script src="js/data-jobs.js"></script>
+    <script src="js/data-formations.js"></script>
+    <script src="js/functions-core.js"></script>
+    <script src="js/functions-ui.js"></script>
+    <script src="js/functions-jobs.js"></script>
+    <script src="js/functions-formations.js"></script>
+    <script src="js/functions-save.js"></script>
+    <script src="js/functions-quiz.js"></script>
+    <script src="js/main.js"></script>
+</head>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+    <div class="logo-icon">
+        <div class="logo-hat"></div>
+        <div class="logo-pompon"></div>
+        <div class="logo-compass"></div>
+    </div>
+    <div class="logo-text">
+        <h1>Tawjih<span>COM</span></h1>
+        <p class="tagline">Votre avenir commence ici</p>
+    </div>
+</div>
+            
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="quizz.html" class="active"><i class="fas fa-clipboard-list"></i> Quizz</a></li>
+                    <li><a href="metiers.html"><i class="fas fa-briefcase"></i> Métiers</a></li>
+                    <li><a href="parcours.html"><i class="fas fa-road"></i> Parcours</a></li>
+                    <li><a href="sauvegarde.html"><i class="fas fa-save"></i> Sauvegarde</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="page">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-clipboard-list"></i> Quizz d'Orientation</h2>
+            
+            <div class="quizz-container">
+                <!-- ÉTAPE 1 : INTRODUCTION -->
+                <div class="card" id="introContainer">
+                    <h3><i class="fas fa-play-circle"></i> Commencer le Quizz</h3>
+                    <p>Ce quizz de <strong>15 questions</strong> va analyser vos préférences pour vous proposer des métiers adaptés à votre profil.</p>
+                    <p><strong>Comment ça marche :</strong></p>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>15 questions simples et rapides</li>
+                        <li>Analyses basées sur vos centres d'intérêt</li>
+                        <li>Recommandations personnalisées</li>
+                        <li>Vous pourrez sauvegarder vos résultats</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 25px;">
+                        <button class="btn" onclick="startSimpleQuiz()" style="padding: 15px 30px; font-size: 1.1rem;">
+                            <i class="fas fa-play"></i> Démarrer le Quizz (15 questions)
+                        </button>
+                    </div>
+                    
+                    <div class="steps" style="margin-top: 30px;">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <h4>Répondez</h4>
+                            <p>15 questions simples</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <h4>Analyse</h4>
+                            <p>Vos préférences</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <h4>Résultats</h4>
+                            <p>Métiers adaptés</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ÉTAPE 2 : QUESTIONS -->
+                <div class="question-card" id="questionContainer" style="display: none;">
+                    <div class="question-header">
+                        <h3 id="questionText">Chargement de la question...</h3>
+                        <div class="question-counter" id="questionCounter">
+                            <i class="fas fa-question-circle"></i> Question 1/15
+                        </div>
+                    </div>
+                    
+                    <div class="answers-grid" id="answersContainer">
+                        <!-- Les réponses apparaissent ici -->
+                    </div>
+                    
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">
+                            Progression: 0/15
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-controls">
+                        <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn">
+                            <i class="fas fa-arrow-left"></i> Question précédente
+                        </button>
+                        <button class="btn btn-secondary" onclick="pauseQuiz()" id="pauseBtn">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- ÉTAPE 3 : RÉSULTATS -->
+                <div class="results-card" id="resultContainer" style="display: none;">
+                    <div class="results-header">
+                        <h3><i class="fas fa-trophy"></i> Vos résultats !</h3>
+                        <p id="resultsSubtitle">Voici les métiers qui correspondent à vos réponses</p>
+                    </div>
+                    
+                    <div class="confidence-level">
+                        <div class="confidence-text">
+                            Niveau de correspondance : <span id="confidencePercent">0%</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666;">
+                            Basé sur l'analyse de vos 15 réponses
+                        </p>
+                    </div>
+                    
+                    <div class="jobs-recommendations" id="jobsRecommendations">
+                        <!-- Les métiers recommandés apparaissent ici -->
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="btn" onclick="saveQuizResults()">
+                            <i class="fas fa-save"></i> Sauvegarder ces résultats
+                        </button>
+                        <button class="btn btn-secondary" onclick="restartSmartQuiz()">
+                            <i class="fas fa-redo"></i> Refaire le quizz
+                        </button>
+                        <a href="metiers.html" class="btn btn-secondary">
+                            <i class="fas fa-search"></i> Voir tous les métiers
+                        </a>
+                    </div>
+                    
+                    <div class="results-notes">
+                        <h4><i class="fas fa-edit"></i> Notes personnelles</h4>
+                        <textarea id="personalNote" placeholder="Ajoutez vos notes, impressions ou questions ici..."></textarea>
+                        <button class="btn btn-small" onclick="savePersonalNote()">
+                            <i class="fas fa-save"></i> Sauvegarder mes notes
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- ÉTAPE 4 : PAUSE -->
+                <div class="card" id="pauseContainer" style="display: none;">
+                    <h3><i class="fas fa-pause-circle"></i> Quizz en pause</h3>
+                    <p>Que souhaitez-vous faire ?</p>
+                    
+                    <div class="pause-actions" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                        <button class="btn" onclick="resumeQuiz()">
+                            <i class="fas fa-play"></i> Reprendre le quizz
+                        </button>
+                        <button class="btn btn-secondary" onclick="saveAndExit()">
+                            <i class="fas fa-save"></i> Sauvegarder et quitter
+                        </button>
+                        <button class="btn btn-secondary" onclick="restartSmartQuiz()">
+                            <i class="fas fa-redo"></i> Recommencer depuis le début
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tawjih<span>COM</span></h3>
+                    <p>Plateforme d'orientation pour les jeunes marocains.</p>
+                    <p><i class="fas fa-user"></i> Zineb Sentissi</p>
+                    <p><i class="fas fa-calendar"></i> Projet 2025</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="quizz.html">Quizz</a></li>
+                        <li><a href="metiers.html">Métiers</a></li>
+                        <li><a href="parcours.html">Parcours</a></li>
+                        <li><a href="sauvegarde.html">Sauvegarde</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Objectifs</h3>
+                    <ul>
+                        <li>Découvrir ses centres d'intérêt</li>
+                        <li>Explorer les métiers accessibles</li>
+                        <li>Trouver les formations adaptées</li>
+                        <li>Planifier son avenir professionnel</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TawjihCOM - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+  
+    
+    <script>
+        // Initialiser la page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("✅ Page quizz chargée");
+            
+            // Menu mobile
+            const menuBtn = document.getElementById('menuBtn');
+            const mainNav = document.getElementById('mainNav');
+            if (menuBtn && mainNav) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('active');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('nav') && !e.target.closest('.menu-btn')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Charger les données si nécessaire
+            if (typeof jobsData === 'undefined' || jobsData.length === 0) {
+                console.log("📊 Chargement des données métiers...");
+                if (typeof initJobsData === 'function') {
+                    initJobsData();
+                }
+            }
+            
+            // Charger la note personnelle
+            if (typeof loadPersonalNote === 'function') {
+                loadPersonalNote();
+            }
+            
+            // Vérifier si un quizz était en cours
+            const savedState = localStorage.getItem('quizState');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    
+                    // Vérifier si l'état n'est pas trop vieux (moins de 24h)
+                    const now = new Date().getTime();
+                    const isOldState = state.timestamp && (now - state.timestamp > 24 * 60 * 60 * 1000);
+                    
+                    if (!isOldState && confirm("Voulez-vous reprendre le quizz là où vous vous étiez arrêté ?")) {
+                        // Restaurer les variables globales
+                        if (typeof window.currentQuestionIndex !== 'undefined') {
+                            window.currentQuestionIndex = state.currentQuestionIndex || 0;
+                        }
+                        if (typeof window.userAnswers !== 'undefined') {
+                            window.userAnswers = state.userAnswers || [];
+                        }
+                        if (typeof window.userProfileTags !== 'undefined') {
+                            window.userProfileTags = state.userProfileTags || [];
+                        }
+                        
+                        console.log("🔄 État restauré:", {
+                            phase: state.quizPhase,
+                            question: state.currentQuestionIndex,
+                            tags: state.userProfileTags ? state.userProfileTags.length : 0
+                        });
+                        
+                        // Si on avait terminé et on était sur les résultats
+                        if (state.quizPhase === 'results' || (state.currentQuestionIndex && state.currentQuestionIndex >= 15)) {
+                            console.log("📊 Affichage des résultats sauvegardés");
+                            
+                            // Masquer tout sauf les résultats
+                            document.getElementById('introContainer').style.display = 'none';
+                            document.getElementById('questionContainer').style.display = 'none';
+                            document.getElementById('pauseContainer').style.display = 'none';
+                            document.getElementById('resultContainer').style.display = 'block';
+                            
+                            // Recalculer et afficher les résultats
+                            if (typeof calculateRecommendations === 'function') {
+                                const recommendedJobs = calculateRecommendations();
+                                if (typeof displayResults === 'function') {
+                                    displayResults(recommendedJobs);
+                                }
+                            }
+                        } 
+                        // Si on était dans les questions
+                        else if (state.quizPhase === 'questions' && state.currentQuestionIndex < 15) {
+                            console.log("❓ Reprise des questions");
+                            
+                            // Masquer tout sauf les questions
+                            document.getElementById('introContainer').style.display = 'none';
+                            document.getElementById('resultContainer').style.display = 'none';
+                            document.getElementById('pauseContainer').style.display = 'none';
+                            document.getElementById('questionContainer').style.display = 'block';
+                            
+                            // Afficher la question actuelle
+                            if (typeof displayQuestion === 'function') {
+                                displayQuestion(state.currentQuestionIndex);
+                            }
+                        }
+                        
+                        // Nettoyer le localStorage
+                        localStorage.removeItem('quizState');
+                    } else {
+                        // Nettoyer si l'état est trop vieux ou refusé
+                        localStorage.removeItem('quizState');
+                        console.log("🗑️ État du quiz nettoyé");
+                    }
+                } catch (error) {
+                    console.error("Erreur lors de la restauration:", error);
+                    localStorage.removeItem('quizState');
+                }
+            }
+        });
+    </script>
+</body>
+</html>       
