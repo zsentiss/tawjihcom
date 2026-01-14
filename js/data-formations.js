@@ -11,7 +11,7 @@ window.formationsData = [
       "duree": "7 ans + spécialisation",
       "tauxReussite": "25% en 1ère année (estimation)",
       "lien": "https://www.fmpc.ma",
-      "categorie": "SANTÉ",
+      "categorie": "Santé",
       "conditions": "Bac S mention TB. Concours national en fin de première année.",
       "noteBacMin": 16
     },
@@ -24,7 +24,7 @@ window.formationsData = [
       "duree": "6 ans",
       "tauxReussite": "30% en 1ère année (estimation)",
       "lien": "http://www.fmdc.ac.ma",
-      "categorie": "SANTÉ",
+      "categorie": "Santé",
       "conditions": "Bac S mention Bien/TB. Concours national en fin de première année.",
       "noteBacMin": 15.5
     },
@@ -37,7 +37,7 @@ window.formationsData = [
       "duree": "7 ans + spécialisation",
       "tauxReussite": "15% (estimation - concours très dur)",
       "lien": "https://www.sante.gov.ma",
-      "categorie": "SANTÉ",
+      "categorie": "Santé",
       "conditions": "Bac S mention TB. Concours spécifique + tests physiques et médicaux.",
       "noteBacMin": 16.5
     },
@@ -50,7 +50,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "85% (estimation)",
       "lien": "https://www.emi.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention TB. 2 ans de CPGE puis concours national très sélectif.",
       "noteBacMin": 16.5
     },
@@ -63,7 +63,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "88% (estimation)",
       "lien": "https://www.ehtp.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention TB. 2 ans de CPGE puis concours national.",
       "noteBacMin": 16
     },
@@ -76,7 +76,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "82% (estimation)",
       "lien": "https://www.ensias.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention TB. 2 ans de CPGE puis concours national.",
       "noteBacMin": 16
     },
@@ -89,7 +89,7 @@ window.formationsData = [
       "duree": "6 ans",
       "tauxReussite": "70% (estimation)",
       "lien": "https://www.ena.ac.ma",
-      "categorie": "ARCHITECTURE",
+      "categorie": "Architecture",
       "conditions": "Bac toutes filières. Concours spécifique (dessin, culture).",
       "noteBacMin": "Pas de note min. (Concours)"
     },
@@ -102,7 +102,7 @@ window.formationsData = [
       "duree": "6 ans",
       "tauxReussite": "65% (estimation)",
       "lien": "https://www.ena.ac.ma",
-      "categorie": "ARCHITECTURE",
+      "categorie": "Architecture",
       "conditions": "Bac toutes filières. Concours spécifique (dessin, culture).",
       "noteBacMin": "Pas de note min. (Concours)"
     },
@@ -115,7 +115,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "88% (estimation)",
       "lien": "https://www.iscae.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac ou après prépa économique.",
       "noteBacMin": 14
     },
@@ -128,7 +128,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "80% (estimation)",
       "lien": "https://www.encgcasa.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac.",
       "noteBacMin": 13.5
     },
@@ -141,7 +141,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "78% (estimation)",
       "lien": "https://www.encg-marrakech.ac.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac.",
       "noteBacMin": 13
     },
@@ -154,7 +154,7 @@ window.formationsData = [
       "duree": "5 ans pour Master",
       "tauxReussite": "50% (estimation - grand nombre d'étudiants)",
       "lien": "https://www.fsjesr.ac.ma",
-      "categorie": "DROIT & SCIENCES SOCIALES",
+      "categorie": "Droit & sciences sociales",
       "conditions": "Bac toutes séries. Inscription directe après obtention du Bac.",
       "noteBacMin": 10
     },
@@ -167,7 +167,7 @@ window.formationsData = [
       "duree": "2 ans après Master",
       "tauxReussite": "60% (estimation)",
       "lien": "https://www.esnotariat.ac.ma",
-      "categorie": "DROIT & SCIENCES SOCIALES",
+      "categorie": "Droit & sciences sociales",
       "conditions": "Master en Droit. Concours d'entrée.",
       "noteBacMin": "N/A (Post-Master)"
     },
@@ -180,7 +180,7 @@ window.formationsData = [
       "duree": "1 an après Master",
       "tauxReussite": "70% (estimation - après réussite au concours)",
       "lien": "https://www.crmef.ma",
-      "categorie": "ENSEIGNEMENT",
+      "categorie": "Enseignement",
       "conditions": "Master dans la matière à enseigner. Réussite au concours du CAPES.",
       "noteBacMin": "N/A (Post-Master)"
     },
@@ -193,7 +193,7 @@ window.formationsData = [
       "duree": "6 ans (Véto) / 5 ans (Agro)",
       "tauxReussite": "75% (estimation)",
       "lien": "https://www.iav.ac.ma",
-      "categorie": "AGRONOMIE & ENVIRONNEMENT",
+      "categorie": "Agronomie & environnement",
       "conditions": "Bac S. Concours commun après Bac ou après 2 ans de prépa.",
       "noteBacMin": 14.5
     },
@@ -206,8 +206,8 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "65% (estimation)",
       "lien": "#",
-      "categorie": "ARTS & DESIGN",
-      "conditions": "Bac toutes séries. Concours pratique (dessin, créativité).",
+      "categorie": "Arts & design",
+      "conditions": "Bac toutes séries. Concours pratique (dessin, culture).",
       "noteBacMin": 10
     },
     {
@@ -219,7 +219,7 @@ window.formationsData = [
       "duree": "2 ans après Licence",
       "tauxReussite": "80% (estimation)",
       "lien": "https://www.esi.ac.ma",
-      "categorie": "INFORMATION & COMMUNICATION",
+      "categorie": "Information & communication",
       "conditions": "Licence en lettres, droit, économie, etc. Concours d'entrée.",
       "noteBacMin": "N/A (Post-Licence)"
     },
@@ -232,7 +232,7 @@ window.formationsData = [
       "duree": "3 ans environ",
       "tauxReussite": "60% (estimation - méthode intense)",
       "lien": "https://1337.ma",
-      "categorie": "NUMÉRIQUE",
+      "categorie": "Numérique",
       "conditions": "18-30 ans. Sélection par tests en ligne puis 'piscine' (stage intense d'1 mois).",
       "noteBacMin": "Non requis"
     },
@@ -245,7 +245,7 @@ window.formationsData = [
       "duree": "2 ans",
       "tauxReussite": "75% (estimation)",
       "lien": "https://youcode.ma",
-      "categorie": "NUMÉRIQUE",
+      "categorie": "Numérique",
       "conditions": "18-35 ans, Bac non obligatoire. Sélection sur tests et motivation.",
       "noteBacMin": "Non requis"
     },
@@ -258,7 +258,7 @@ window.formationsData = [
       "duree": "2 ans",
       "tauxReussite": "75% (estimation - variable par filière)",
       "lien": "https://www.ofppt.ma",
-      "categorie": "TECHNIQUES & MÉTIERS",
+      "categorie": "Techniques & métiers",
       "conditions": "Bac (toute série). Sélection sur dossier scolaire (notes de Bac).",
       "noteBacMin": 10
     },
@@ -271,7 +271,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "80% (estimation)",
       "lien": "https://www.emsi.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S/Sciences Maths. Sélection sur dossier, test et entretien.",
       "noteBacMin": 13
     },
@@ -284,7 +284,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "78% (estimation)",
       "lien": "https://www.emsi.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S/Sciences Maths. Sélection sur dossier, test et entretien.",
       "noteBacMin": 12.5
     },
@@ -297,7 +297,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "75% (estimation)",
       "lien": "https://www.emsi.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S/Sciences Maths. Sélection sur dossier, test et entretien.",
       "noteBacMin": 12.5
     },
@@ -310,7 +310,7 @@ window.formationsData = [
       "duree": "4 ans (Bachelor)",
       "tauxReussite": "85% (estimation)",
       "lien": "https://www.aui.ma",
-      "categorie": "UNIVERSITÉ PLURIDISCIPLINAIRE",
+      "categorie": "Université pluridisciplinaire",
       "conditions": "Bac toute série avec bon niveau d'anglais (TOEFL/IELTS). Sélection sur dossier et entretien.",
       "noteBacMin": 14
     },
@@ -323,7 +323,7 @@ window.formationsData = [
       "duree": "Variable (3 à 5 ans)",
       "tauxReussite": "80% (estimation)",
       "lien": "https://www.uir.ac.ma",
-      "categorie": "UNIVERSITÉ PLURIDISCIPLINAIRE",
+      "categorie": "Université pluridisciplinaire",
       "conditions": "Bac selon la filière. Sélection sur dossier et souvent test/entretien.",
       "noteBacMin": 12
     },
@@ -336,7 +336,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "78% (estimation)",
       "lien": "https://www.ensat.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 14.5
     },
@@ -349,7 +349,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "75% (estimation)",
       "lien": "https://www.ensa-agadir.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 14
     },
@@ -362,7 +362,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "73% (estimation)",
       "lien": "https://ensao.ump.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 13.5
     },
@@ -375,7 +375,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "72% (estimation)",
       "lien": "https://ensas.umi.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 13.5
     },
@@ -388,7 +388,7 @@ window.formationsData = [
       "duree": "3 ans (Licence) + 2 ans (Master)",
       "tauxReussite": "65% (estimation)",
       "lien": "https://www.fstt.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S. Inscription directe via plateforme nationale.",
       "noteBacMin": 12
     },
@@ -401,7 +401,7 @@ window.formationsData = [
       "duree": "2 ans de formation",
       "tauxReussite": "10% (estimation - concours ultra-sélectif)",
       "lien": "https://www.dgstn.ma",
-      "categorie": "SÉCURITÉ & DÉFENSE",
+      "categorie": "Sécurité & défense",
       "conditions": "Licence (Bac+3) minimum. Concours difficile + tests physiques et psychologiques.",
       "noteBacMin": "N/A (Post-Licence)"
     },
@@ -414,7 +414,7 @@ window.formationsData = [
       "duree": "4 ans",
       "tauxReussite": "12% (estimation - concours très dur)",
       "lien": "#",
-      "categorie": "SÉCURITÉ & DÉFENSE",
+      "categorie": "Sécurité & défense",
       "conditions": "Bac S ou SM. Concours national + tests physiques/strictes.",
       "noteBacMin": 15
     },
@@ -427,7 +427,7 @@ window.formationsData = [
       "duree": "18-24 mois",
       "tauxReussite": "85% (estimation - sélection rigoureuse)",
       "lien": "#",
-      "categorie": "TRANSPORT & LOGISTIQUE",
+      "categorie": "Transport & logistique",
       "conditions": "Bac S, excellente santé, anglais fluent. Sélection sur tests et entretiens.",
       "noteBacMin": 14
     },
@@ -440,7 +440,7 @@ window.formationsData = [
       "duree": "3 ans",
       "tauxReussite": "80% (estimation)",
       "lien": "#",
-      "categorie": "SANTÉ",
+      "categorie": "Santé",
       "conditions": "Bac S ou SVT. Sélection sur dossier et entretien.",
       "noteBacMin": 12
     },
@@ -453,7 +453,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "90% (estimation)",
       "lien": "https://centrale-casablanca.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention TB. Concours très sélectif ou admission sur titre.",
       "noteBacMin": 16
     },
@@ -466,7 +466,7 @@ window.formationsData = [
       "duree": "7 ans + spécialisation",
       "tauxReussite": "22% en 1ère année (estimation)",
       "lien": "https://www.fmpf.ma",
-      "categorie": "SANTÉ",
+      "categorie": "Santé",
       "conditions": "Bac S mention Bien. Concours national en fin de première année.",
       "noteBacMin": 15
     },
@@ -479,7 +479,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "74% (estimation)",
       "lien": "https://ensaf.ump.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 13.5
     },
@@ -492,7 +492,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "76% (estimation)",
       "lien": "https://www.encgfes.ac.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac.",
       "noteBacMin": 13
     },
@@ -505,7 +505,7 @@ window.formationsData = [
       "duree": "3 ans (Licence) + 2 ans (Master)",
       "tauxReussite": "63% (estimation)",
       "lien": "https://www.fst-usmba.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S. Inscription directe via plateforme nationale.",
       "noteBacMin": 12
     },
@@ -518,7 +518,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "72% (estimation)",
       "lien": "https://ensas.umi.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S mention AB. 2 ans CPGE + concours national.",
       "noteBacMin": 13.5
     },
@@ -531,7 +531,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "73% (estimation)",
       "lien": "https://www.encg.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac.",
       "noteBacMin": 12.5
     },
@@ -544,7 +544,7 @@ window.formationsData = [
       "duree": "3 ans (Licence) + 2 ans (Master)",
       "tauxReussite": "68% (estimation)",
       "lien": "https://www.fstagadir.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S. Inscription directe via plateforme nationale.",
       "noteBacMin": 12
     },
@@ -557,7 +557,7 @@ window.formationsData = [
       "duree": "5 ans",
       "tauxReussite": "72% (estimation)",
       "lien": "https://www.encg-meknes.ac.ma",
-      "categorie": "COMMERCE & GESTION",
+      "categorie": "Commerce & gestion",
       "conditions": "Bac S/Éco/Tech. Concours après Bac.",
       "noteBacMin": 12.5
     },
@@ -570,10 +570,10 @@ window.formationsData = [
       "duree": "3 ans (Licence) + 2 ans (Master)",
       "tauxReussite": "64% (estimation)",
       "lien": "https://www.fstm.ac.ma",
-      "categorie": "INGÉNIERIE",
+      "categorie": "Ingénierie",
       "conditions": "Bac S. Inscription directe via plateforme nationale.",
       "noteBacMin": 12
     }
 ];
 
-console.log(`✅ ${window.formationsData.length} formations chargées`);
+console.log(`✅ ${window.formationsData.length} formations chargées avec catégories formatées.`);
