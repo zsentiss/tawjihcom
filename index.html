@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TawjihCOM - Votre Compagnon d'Orientation</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Charger les modules JavaScript dans l'ordre -->
+    <script src="js/config.js"></script>
+    <script src="js/data-jobs.js"></script>
+    <script src="js/data-formations.js"></script>
+    <script src="js/functions-core.js"></script>
+    <script src="js/functions-ui.js"></script>
+    <script src="js/functions-jobs.js"></script>
+    <script src="js/functions-formations.js"></script>
+    <script src="js/functions-save.js"></script>
+    <script src="js/functions-quiz.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles spécifiques à la page d'accueil */
+        .hero-section {
+            background: linear-gradient(135deg, var(--rouge) 0%, #a30615 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="white"/></svg>');
+            background-size: 100% 100px;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .cta-primary {
+            background: var(--vert);
+            color: var(--rouge);
+            font-weight: bold;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--rouge);
+            box-shadow: 0 15px 40px rgba(120, 8, 17, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--vert), var(--bleu));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            color: var(--rouge);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .feature-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .filiere-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .filiere-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .filiere-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .filiere-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .filiere-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border-color: var(--rouge);
+        }
+        
+        .filiere-header {
+            background: linear-gradient(135deg, var(--bleu), #7aa8d1);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+        
+        .filiere-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--rouge);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .filiere-content {
+            padding: 25px;
+        }
+        
+        .difficulty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .difficulty-stars {
+            color: #f39c12;
+        }
+        
+        .domaines-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .domaine-tag {
+            background: #e8f4fc;
+            color: var(--rouge);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--vert) 0%, #b8e1a6 100%);
+            padding: 80px 0;
+            color: var(--rouge);
+        }
+        
+        .testimonial {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            margin-top: 20px;
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        .stats-section {
+            padding: 60px 0;
+            background: var(--rouge);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--vert);
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .how-it-works {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: var(--bleu);
+            z-index: 1;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--rouge);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border: 5px solid #f9f9f9;
+        }
+        
+        .step h4 {
+            color: var(--rouge);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .step p {
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="logo-hat"></div>
+                    <div class="logo-pompon"></div>
+                    <div class="logo-compass"></div>
+                </div>
+                <div class="logo-text">
+                    <h1>Tawjih<span>COM</span></h1>
+                    <p class="tagline">Votre avenir commence ici</p>
+                </div>
+            </div>
+            
+            <button class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="quizz.html"><i class="fas fa-clipboard-list"></i> Quizz</a></li>
+                    <li><a href="metiers.html"><i class="fas fa-briefcase"></i> Métiers</a></li>
+                    <li><a href="parcours.html"><i class="fas fa-road"></i> Parcours</a></li>
+                    <li><a href="sauvegarde.html"><i class="fas fa-save"></i> Sauvegarde</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title">Trouve ta voie avec TawjihCOM</h1>
+            <p class="hero-subtitle">
+                La plateforme d'orientation intelligente pour les jeunes Marocains. 
+                Découvre les métiers qui te correspondent, trouve les formations adaptées 
+                et construis ton projet professionnel en toute confiance.
+            </p>
+            <div class="cta-buttons">
+                <a href="quizz.html" class="btn cta-primary">
+                    <i class="fas fa-play"></i> Démarrer le Quizz d'Orientation
+                </a>
+                <a href="metiers.html" class="btn cta-secondary">
+                    <i class="fas fa-search"></i> Explorer les Métiers
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTIQUES -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">35+</div>
+                    <div class="stat-label">Métiers détaillés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Écoles & Formations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Questions du quizz</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Gratuit & Accessible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Comment ça marche ?</h2>
+            <p style="text-align: center; max-width: 700px; margin: 20px auto 0; color: #555; font-size: 1.1rem;">
+                4 étapes simples pour découvrir votre voie professionnelle
+            </p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Quizz Personnalisé</h4>
+                    <p>Répondez à 15 questions pour découvrir vos centres d'intérêt</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Explorer les Métiers</h4>
+                    <p>Découvrez +35 métiers avec salaires, études et compétences</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Trouver sa Formation</h4>
+                    <p>Identifiez les écoles et parcours adaptés à vos choix</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Planifier son Avenir</h4>
+                    <p>Sauvegardez vos préférences et générez votre plan d'action</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LES FILIÈRES DU BAC -->
+    <section class="filiere-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Les Filières du Bac Marocain</h2>
+            <div class="filiere-intro">
+                <p>Choisir la bonne filière au lycée est la première étape vers la réussite. Voici un guide complet des principales filières disponibles.</p>
+            </div>
+            
+            <div class="filiere-grid">
+                <!-- SCIENCES MATHÉMATIQUES -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Sciences Mathématiques</h3>
+                        <span class="filiere-badge">Scientifique</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Filière d'excellence axée sur les mathématiques pures et appliquées, la physique et les sciences de l'ingénieur.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Ingénierie</span>
+                            <span class="domaine-tag">Architecture</span>
+                            <span class="domaine-tag">Informatique</span>
+                            <span class="domaine-tag">Finance</span>
+                            <span class="domaine-tag">Sciences</span>
+                        </div>
+                        <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Accès à toutes les écoles d'ingénieurs et facultés scientifiques. Formation très valorisée.</p>
+                    </div>
+                    
+                </div>
+                
+                
+                <!-- SCIENCES EXPÉRIMENTALES -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Sciences Expérimentales</h3>
+                        <span class="filiere-badge">Scientifique</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Focus sur la biologie, la géologie, la physique-chimie et les sciences de la vie et de la terre.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Médecine</span>
+                            <span class="domaine-tag">Pharmacie</span>
+                            <span class="domaine-tag">Dentaire</span>
+                            <span class="domaine-tag">Biologie</span>
+                            <span class="domaine-tag">Agronomie</span>
+                            <span class="domaine-tag">Environnement</span>
+                        </div>
+                        
+                       <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Voie royale pour les études médicales et paramédicales. Large choix de spécialités.</p>
+                    </div>
+                </div>
+                         
+                <!-- SCIENCES ÉCONOMIQUES -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Sciences Économiques</h3>
+                        <span class="filiere-badge">Économique</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Étude de l'économie, de la gestion, des mathématiques appliquées et des sciences sociales.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Commerce</span>
+                            <span class="domaine-tag">Gestion</span>
+                            <span class="domaine-tag">Comptabilité</span>
+                            <span class="domaine-tag">Marketing</span>
+                            <span class="domaine-tag">Finance</span>
+                            <span class="domaine-tag">Droit</span>
+                        </div>
+                        <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Accès aux écoles de commerce et facultés de droit. Polyvalence professionnelle.</p>
+                    </div>
+                </div>
+                
+                <!-- LETTRES & SCIENCES HUMAINES -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Lettres & Sciences Humaines</h3>
+                        <span class="filiere-badge">Littéraire</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Étude approfondie de la langue, de la littérature, de l'histoire, de la géographie et de la philosophie.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Enseignement</span>
+                            <span class="domaine-tag">Journalisme</span>
+                            <span class="domaine-tag">Traduction</span>
+                            <span class="domaine-tag">Psychologie</span>
+                            <span class="domaine-tag">Sociologie</span>
+                            <span class="domaine-tag">Archivistique</span>
+                        </div>
+                        <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Excellente culture générale. Débouchés dans l'enseignement et les métiers de la communication.</p>
+                    </div>
+                </div>
+                
+                <!-- SCIENCES ET TECHNOLOGIES -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Sciences et Technologies</h3>
+                        <span class="filiere-badge">Technique</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Formation technique combinant sciences fondamentales et applications technologiques.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Génie Civil</span>
+                            <span class="domaine-tag">Électricité</span>
+                            <span class="domaine-tag">Mécanique</span>
+                            <span class="domaine-tag">Informatique</span>
+                            <span class="domaine-tag">BTP</span>
+                            <span class="domaine-tag">Industrie</span>
+                        </div>
+                        <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Formation pratique et concrète. Débouchés rapides dans les secteurs techniques.</p>
+                    </div>
+                </div>
+                
+                <!-- ARTS APPLIQUÉS -->
+                <div class="filiere-card">
+                    <div class="filiere-header">
+                        <h3>Arts Appliqués</h3>
+                        <span class="filiere-badge">Artistique</span>
+                    </div>
+                    <div class="filiere-content">
+                        <p><strong>Description :</strong> Formation artistique combinant créativité, design et techniques d'expression visuelle.</p>
+                        
+                        <div class="difficulty">
+                            <span>Difficulté :</span>
+                            <div class="difficulty-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Domaines accessibles :</strong></p>
+                        <div class="domaines-list">
+                            <span class="domaine-tag">Design Graphique</span>
+                            <span class="domaine-tag">Architecture d'intérieur</span>
+                            <span class="domaine-tag">Mode</span>
+                            <span class="domaine-tag">Animation</span>
+                            <span class="domaine-tag">Publicité</span>
+                            <span class="domaine-tag">Arts Numériques</span>
+                        </div>
+                        <div class="filiere-actions">
+    <button class="btn btn-small" onclick="showMetiersForFiliere('${filiere.type}')">
+        <i class="fas fa-eye"></i> Voir les métiers
+    </button>
+    <button class="btn btn-small btn-secondary" onclick="showFormationsForFiliere('${filiere.type}')">
+        <i class="fas fa-graduation-cap"></i> Écoles
+    </button>
+</div>
+                        <p style="margin-top: 15px;"><strong>Points forts :</strong> Développement de la créativité. Secteur en pleine croissance avec le numérique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Pourquoi choisir TawjihCOM ?</h2>
+            <p style="text-align: center; max-width: 700px; margin: 20px auto 0; color: #555; font-size: 1.1rem;">
+                Une plateforme complète conçue spécifiquement pour les jeunes Marocains
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Orientation Personnalisée</h3>
+                    <p>Notre quizz intelligent analyse vos centres d'intérêt pour vous proposer des métiers qui correspondent réellement à votre profil.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>100% Marocain</h3>
+                    <p>Toutes nos données (écoles, formations, salaires) sont spécifiques au contexte marocain. Des informations réalistes et actualisées.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>+35 Métiers Détailés</h3>
+                    <p>Explorez des fiches métiers complètes avec salaires, études nécessaires, compétences requises et parcours type.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3>Parcours Clairs</h3>
+                    <p>Pour chaque métier, découvrez le chemin à suivre : écoles, concours, durée des études et établissements recommandés.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <h3>Sauvegarde Intelligente</h3>
+                    <p>Gardez une trace de vos préférences, générez des PDF et construisez progressivement votre projet professionnel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Accessible Partout</h3>
+                    <p>Site responsive qui s'adapte à tous les écrans. Utilisable sur mobile, tablette et ordinateur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉMOIGNAGE -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial">
+                <i class="fas fa-quote-left fa-2x" style="opacity: 0.5; margin-bottom: 20px;"></i>
+                <p>"Grâce à TawjihCOM, j'ai découvert le métier d'architecte qui me correspond parfaitement. Le quizz m'a guidé et les informations sur les écoles marocaines m'ont été très utiles pour mon inscription."</p>
+                <div class="testimonial-author">
+                    - Yasmine, 17 ans, future étudiante en architecture
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section style="padding: 60px 0; background: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--rouge); margin-bottom: 20px; font-size: 2rem;">Prêt à découvrir votre voie ?</h2>
+            <p style="color: #555; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
+                Ne laissez pas le hasard décider de votre avenir. Commencez dès maintenant votre parcours d'orientation.
+            </p>
+            <a href="quizz.html" class="btn" style="padding: 15px 40px; font-size: 1.2rem; background: var(--rouge);">
+                <i class="fas fa-play-circle"></i> Commencer Maintenant - C'est Gratuit !
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tawjih<span>COM</span></h3>
+                    <p>Plateforme d'orientation pour les jeunes marocains.</p>
+                    <p><i class="fas fa-user"></i> Zineb Sentissi</p>
+                    <p><i class="fas fa-calendar"></i> Projet 2025</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="quizz.html">Quizz</a></li>
+                        <li><a href="metiers.html">Métiers</a></li>
+                        <li><a href="parcours.html">Parcours</a></li>
+                        <li><a href="sauvegarde.html">Sauvegarde</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Objectifs</h3>
+                    <ul>
+                        <li>Découvrir ses centres d'intérêt</li>
+                        <li>Explorer les métiers accessibles</li>
+                        <li>Trouver les formations adaptées</li>
+                        <li>Planifier son avenir professionnel</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Filières Bac</h3>
+                    <ul>
+                        <li>Sciences Mathématiques</li>
+                        <li>Sciences Expérimentales</li>
+                        <li>Sciences Économiques</li>
+                        <li>Lettres & Sciences Humaines</li>
+                        <li>Sciences et Technologies</li>
+                        <li>Arts Appliqués</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TawjihCOM - Tous droits réservés | Plateforme d'orientation gratuite</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+function showMetiersForFiliere(type) {
+    // Sauvegarder le filtre
+    localStorage.setItem('filiereFilter', type);
+    // Rediriger vers métiers
+    window.location.href = 'metiers.html';
+}
+
+function showFormationsForFiliere(type) {
+    // Convertir type filière en domaine formation
+    const mapping = {
+        'scientifique': 'INGÉNIERIE',
+        'litteraire': 'DROIT & SCIENCES SOCIALES',
+        'technique': 'TECHNIQUES & MÉTIERS'
+    };
+    const domaine = mapping[type] || 'tous';
+    
+    // Sauvegarder et rediriger
+    localStorage.setItem('formationDomaineFilter', domaine);
+    window.location.href = 'parcours.html';
+}
+
+// Au chargement de metiers.html, appliquer le filtre si présent
+if (window.location.pathname.includes('metiers.html')) {
+    const filiereFilter = localStorage.getItem('filiereFilter');
+    if (filiereFilter) {
+        // Appliquer automatiquement le filtre
+        setTimeout(() => {
+            if (typeof filterJobs === 'function') {
+                filterJobs(filiereFilter.toUpperCase());
+            }
+            localStorage.removeItem('filiereFilter');
+        }, 500);
+    }
+}
+</script>
+
+</body>
+</html>
