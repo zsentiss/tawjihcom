@@ -439,18 +439,38 @@ main {
 }
 
 .filter-btn {
-    padding: 8px 15px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 20px;
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #555;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+    background: var(--vert);
+    border-color: var(--vert);
+    color: var(--rouge);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .filter-btn.active {
     background: var(--rouge);
     color: white;
+    border-color: var(--rouge);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(120, 8, 17, 0.3);
+}
+
+.filter-btn.active:hover {
+    background: #5a060d;
+    border-color: #5a060d;
 }
 
 #jobsContainer {
@@ -539,23 +559,41 @@ main {
 }
 
 .quick-filters {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     margin: 25px 0;
+    border: 2px solid #f0f0f0;
 }
 
 .filter-category {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.filter-category:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .filter-category h4 {
     color: var(--rouge);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-category h4 i {
+    font-size: 1.3rem;
+    color: var(--bleu);
 }
 
 #formationsContainer {
@@ -1317,17 +1355,48 @@ footer {
 /* Compteur résultats */
 .results-counter {
     text-align: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: var(--bleu);
+    margin: 30px 0;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, var(--vert) 0%, #b8e1a6 100%);
     color: var(--rouge);
-    border-radius: 10px;
+    border-radius: 15px;
     font-weight: bold;
     font-size: 1.1rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border: 2px solid rgba(120, 8, 17, 0.1);
 }
 
 .results-counter span {
+    font-size: 2rem;
+    color: var(--rouge);
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+    padding: 0 10px;
+}
+
+/* Message aucun résultat */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin: 30px 0;
+}
+
+.no-results i {
+    color: var(--bleu);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-results h3 {
+    color: var(--rouge);
+    margin-bottom: 15px;
     font-size: 1.5rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.no-results p {
+    color: #666;
+    font-size: 1.1rem;
 }

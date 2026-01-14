@@ -17,6 +17,7 @@ window.appState = {
         domaine: 'tous',
         type: 'tous',
         bac: 0,
+        bacFiliere: 'toutes',
         search: ''
     },
     quizState: {

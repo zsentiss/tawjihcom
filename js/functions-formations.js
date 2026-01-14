@@ -2,22 +2,41 @@
 
 // Initialisation page formations
 window.initFormationsPage = function() {
-    console.log("📚 Initialisation page Formations");
-    loadDataIfNeeded();
+    console.log("📚 ========== DÉBUT INITIALISATION PAGE FORMATIONS ==========");
+    
+    // Vérifier les données
+    const dataCheck = loadDataIfNeeded();
+    console.log("📊 Données disponibles:", dataCheck);
+    
+    if (dataCheck.formations === 0) {
+        console.error("❌ ERREUR: Aucune formation disponible!");
+        return;
+    }
+    
+    console.log("🔧 Setup des filtres...");
     setupFormationFilters();
+    
+    console.log("🔍 Setup de la recherche...");
     setupFormationSearch();
+    
+    console.log("📋 Affichage des formations...");
     displayFormations();
+    
+    console.log("🔢 Mise à jour du compteur...");
     updateResultsCount();
+    
+    console.log("✅ ========== FIN INITIALISATION PAGE FORMATIONS ==========");
 };
 
 // Configuration des filtres formations
-function setupFormationFilters() {
+window.setupFormationFilters = function() {
+    console.log("\ud83d\udd27 Configuration des filtres formations...");
     setupVilleFilters();
     setupDomaineFilters();
     setupTypeFilters();
     setupBacFilters();
     setupBacFiliereFilters(); 
-}
+};
 
 function setupVilleFilters() {
     const villes = ['Casablanca', 'Rabat', 'Marrakech', 'Fès', 'Tanger', 'Agadir', 'Meknès', 'Safi', 'Benguerir', 'Kénitra', 'Oujda', 'El Jadida', 'Tétouan', 'Ifrane', 'Youssoufia'];
@@ -115,7 +134,8 @@ function setupBacFilters() {
 }
 
 // Configuration recherche formations
-function setupFormationSearch() {
+window.setupFormationSearch = function() {
+    console.log("\ud83d\udd0d Configuration de la recherche formations...");
     const searchInput = document.getElementById('searchFormation');
     if (searchInput) {
         searchInput.addEventListener('input', () => {
@@ -124,14 +144,21 @@ function setupFormationSearch() {
             updateResultsCount();
         });
     }
-}
+};
 
 // Afficher les formations filtrées
-function displayFormations() {
+window.displayFormations = function() {
+    console.log("\ud83d\udcc4 Affichage des formations...");
+    console.log("\ud83d\udcca Nombre total de formations:", window.formationsData.length);
+    
     const container = document.getElementById('formationsContainer');
     const noResults = document.getElementById('noResults');
-    if (!container) return;
-
+    
+    if (!container) {
+        console.error("❌ Container 'formationsContainer' non trouvé");
+        return;
+    }
+    console.log("🔍 Filtres actifs:", window.appState.formationFilters);
     const filtered = window.formationsData.filter(formation => {
         const filters = window.appState.formationFilters;
         
@@ -191,10 +218,14 @@ if (filters.bacFiliere !== 'toutes') {
         return true;
     });
 
+    console.log(`✅ ${filtered.length} formations après filtrage`);
+
     if (filtered.length === 0) {
+        console.warn("⚠️ Aucune formation ne correspond aux filtres");
         container.style.display = 'none';
         if (noResults) noResults.style.display = 'block';
     } else {
+        console.log(`🎨 Création de ${filtered.length} cartes...`);
         container.style.display = 'grid';
         if (noResults) noResults.style.display = 'none';
         container.innerHTML = '';
@@ -258,11 +289,13 @@ if (filters.bacFiliere !== 'toutes') {
             `;
             container.appendChild(card);
         });
+        
+        console.log(`✅ ${filtered.length} cartes créées et ajoutées au container`);
     }
-}
+};
 
 // Mettre à jour le compteur de résultats
-function updateResultsCount() {
+window.updateResultsCount = function() {
     const countElement = document.getElementById('resultsCount');
     if (countElement) {
         const count = window.formationsData.filter(formation => {
@@ -316,33 +349,4 @@ function setupBacFiliereFilters() {
     });
 }
 
-// Modifiez displayFormations() - cherchez où on filtre par bacFiliere :
-// REMPLACEZ toute cette partie compliquée :
-if (filters.bacFiliere !== 'toutes') {
-    // Logique simple : certaines formations sont pour certaines filières
-    if (filters.bacFiliere === 'Scientifique') {
-        if (!formation.categorie.includes('SANTÉ') && 
-            !formation.categorie.includes('INGÉNIERIE') &&
-            !formation.categorie.includes('ARCHITECTURE')) {
-            return false;
-        }
-    }
-    // ... etc ...
-}
-
-// PAR CE CODE SIMPLE ET FONCTIONNEL :
-if (filters.bacFiliere && filters.bacFiliere !== 'toutes') {
-    // Mapping simple entre filière bac et catégories de formation
-    const filiereMapping = {
-        'Scientifique': ['SANTÉ', 'INGÉNIERIE', 'ARCHITECTURE', 'AGRONOMIE & ENVIRONNEMENT'],
-        'Littéraire': ['DROIT & SCIENCES SOCIALES', 'ENSEIGNEMENT', 'ARTS & DESIGN', 'INFORMATION & COMMUNICATION'],
-        'Économique': ['COMMERCE & GESTION', 'DROIT & SCIENCES SOCIALES'],
-        'Technique': ['TECHNIQUES & MÉTIERS', 'INGÉNIERIE', 'NUMÉRIQUE']
-    };
-    
-    const categoriesAcceptees = filiereMapping[filters.bacFiliere] || [];
-    if (!categoriesAcceptees.includes(formation.categorie)) {
-        return false;
-    }
-}
 console.log("✅ Fonctions formations chargées");

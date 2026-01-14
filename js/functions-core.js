@@ -20,15 +20,23 @@ window.showNotification = function(message, type = 'success', duration = 4000) {
 
 // Fonction pour charger les données si nécessaires
 window.loadDataIfNeeded = function() {
-    if (window.jobsData.length === 0) {
-        console.log("🔄 Chargement des données métiers...");
-        // Les données sont déjà chargées via les fichiers séparés
+    console.log("🔍 Vérification des données...");
+    console.log(`📊 Métiers chargés: ${window.jobsData?.length || 0}`);
+    console.log(`📚 Formations chargées: ${window.formationsData?.length || 0}`);
+    
+    if (!window.jobsData || window.jobsData.length === 0) {
+        console.warn("⚠️ Aucune donnée métiers détectée. Vérifiez que data-jobs.js est bien chargé.");
     }
     
-    if (window.formationsData.length === 0) {
-        console.log("🔄 Chargement des données formations...");
-        // Les données sont déjà chargées via les fichiers séparés
+    if (!window.formationsData || window.formationsData.length === 0) {
+        console.warn("⚠️ Aucune donnée formations détectée. Vérifiez que data-formations.js est bien chargé.");
     }
+    
+    // Les données sont chargées via les fichiers data-*.js inclus dans le HTML
+    return {
+        jobs: window.jobsData?.length || 0,
+        formations: window.formationsData?.length || 0
+    };
 };
 
 // Menu mobile (version simplifiée pour remplacer l'ancienne)
