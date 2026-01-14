@@ -623,6 +623,12 @@ main {
     position: relative;
 }
 
+.formation-header h3 {
+    padding-right: 100px;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
 .formation-badge {
     position: absolute;
     top: 15px;
@@ -641,7 +647,7 @@ main {
 
 .formation-details {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin: 25px 0;
     background: #f9f9f9;
@@ -657,6 +663,7 @@ main {
     background: white;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    min-width: 0;
 }
 
 .detail-item i {
@@ -664,6 +671,19 @@ main {
     color: var(--rouge);
     min-width: 25px;
     text-align: center;
+    flex-shrink: 0;
+}
+
+.detail-item > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.detail-label,
+.detail-value {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .formation-actions {
