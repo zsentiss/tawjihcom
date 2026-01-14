@@ -970,19 +970,20 @@ footer {
     background: linear-gradient(135deg, var(--bleu), #7aa8d1);
     color: white;
     padding: 25px;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .filiere-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     background: var(--rouge);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
+    margin-left: 20px;
+    margin-right: 1px;
 }
 
 .filiere-content {
